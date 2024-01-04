@@ -1,0 +1,13 @@
+.idea
+.vscode
+
+.DS_*
+*.log
+logs
+**/*.backup.*
+**/*.back.*
+
+node_modules/
+
+npm-debug.log
+yarn-error.log
