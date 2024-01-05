@@ -4,8 +4,12 @@ const gulp = require('gulp');
 const browserSync = require('browser-sync').create();
 const sass = require('gulp-sass')(require('sass'));
 const sourcemaps = require('gulp-sourcemaps');
-const uglify = require('gulp-uglify');
 const concat = require('gulp-concat');
+
+const rollup = require('@rollup/stream');
+const babel = require('@rollup/plugin-babel');
+const nodeResolve = require('@rollup/plugin-node-resolve');
+const source = require('vinyl-source-stream');
 
 gulp.task('styles', function () {
   return gulp.src('./src/assets/styles/**/*.scss')
@@ -18,15 +22,19 @@ gulp.task('styles', function () {
 });
 
 gulp.task('scripts', function () {
-  return gulp.src('./src/assets/scripts/*.js')
-      .pipe(sourcemaps.init())
-      .pipe(concat('main.js'))
-      .pipe(uglify())
-      .pipe(sourcemaps.write())
+  return rollup({
+    input: './src/assets/scripts/index.js',
+    plugins: [babel(), nodeResolve()],
+    output: {
+      format: 'iife',
+      sourcemap: true
+    }
+  })
+      .pipe(source('main.js'))
       .pipe(gulp.dest('./public/js'));
 })
 
-gulp.task('watch', function(){
+gulp.task('watch', function () {
   browserSync.init({
     server: {
       baseDir: './public',
@@ -34,7 +42,7 @@ gulp.task('watch', function(){
   });
 
   gulp.watch('./src/assets/styles/**/*.scss', gulp.parallel('styles'));
-  gulp.watch('./src/assets/scripts/**/*.js', gulp.parallel('scripts', browserSync.reload));
+  gulp.watch('./src/assets/scripts/**/*.js').on('change', gulp.series('scripts', browserSync.reload));
   gulp.watch('./public/*.html').on('change', browserSync.reload);
 });
 
