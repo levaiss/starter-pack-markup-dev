@@ -12,7 +12,7 @@ const nodeResolve = require('@rollup/plugin-node-resolve');
 const source = require('vinyl-source-stream');
 
 gulp.task('styles', function () {
-  return gulp.src('./src/assets/styles/**/*.scss')
+  return gulp.src('./src/styles/**/*.scss')
       .pipe(sourcemaps.init())
       .pipe(sass().on('error', sass.logError))
       .pipe(concat('main.css'))
@@ -23,7 +23,7 @@ gulp.task('styles', function () {
 
 gulp.task('scripts', function () {
   return rollup({
-    input: './src/assets/scripts/index.js',
+    input: './src/scripts/index.js',
     plugins: [babel(), nodeResolve()],
     output: {
       format: 'iife',
@@ -41,8 +41,8 @@ gulp.task('watch', function () {
     }
   });
 
-  gulp.watch('./src/assets/styles/**/*.scss', gulp.parallel('styles'));
-  gulp.watch('./src/assets/scripts/**/*.js').on('change', gulp.series('scripts', browserSync.reload));
+  gulp.watch('./src/styles/**/*.scss', gulp.parallel('styles'));
+  gulp.watch('./src/scripts/**/*.js').on('change', gulp.series('scripts', browserSync.reload));
   gulp.watch('./public/*.html').on('change', browserSync.reload);
 });
 
