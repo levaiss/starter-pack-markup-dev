@@ -31,5 +31,9 @@
     "gulp-sourcemaps": "^3.0.0",
     "sass": "^1.69.7",
     "vinyl-source-stream": "^2.0.0"
+  },
+  "dependencies": {
+    "notyf": "^3.10.0",
+    "toastify-js": "^1.12.0"
   }
 }
