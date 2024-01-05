@@ -9,6 +9,7 @@ const concat = require('gulp-concat');
 const rollup = require('@rollup/stream');
 const babel = require('@rollup/plugin-babel');
 const nodeResolve = require('@rollup/plugin-node-resolve');
+const eslint = require('@rollup/plugin-eslint');
 const source = require('vinyl-source-stream');
 
 gulp.task('styles', function () {
@@ -24,7 +25,7 @@ gulp.task('styles', function () {
 gulp.task('scripts', function () {
   return rollup({
     input: './src/scripts/index.js',
-    plugins: [babel(), nodeResolve()],
+    plugins: [eslint(), babel(), nodeResolve()],
     output: {
       format: 'iife',
       sourcemap: true

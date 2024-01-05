@@ -19,9 +19,11 @@
   "license": "ISC",
   "devDependencies": {
     "@rollup/plugin-babel": "^6.0.4",
+    "@rollup/plugin-eslint": "^9.0.5",
     "@rollup/plugin-node-resolve": "^15.2.3",
     "@rollup/stream": "^3.0.1",
     "browser-sync": "^3.0.2",
+    "eslint": "^8.56.0",
     "gulp": "^4.0.2",
     "gulp-concat": "^2.6.1",
     "gulp-if": "^3.0.0",
