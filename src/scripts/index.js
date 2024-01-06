@@ -1,12 +1,12 @@
-import {getVacancies} from "./api/vacancy";
-import { Notyf } from 'notyf';
+import {Notyf} from 'notyf';
+import {wait} from "./utils";
 
 const App = function () {
   const notyf = new Notyf();
 
   const testFn = async () => {
-    const x = await getVacancies();
-    console.log(x);
+
+    await wait(300);
 
     notyf.error('Please fill out the form');
   }
