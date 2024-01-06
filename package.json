@@ -38,6 +38,7 @@
     "vinyl-source-stream": "^2.0.0"
   },
   "dependencies": {
-    "notyf": "^3.10.0"
+    "notyf": "^3.10.0",
+    "reset-css": "^5.0.2"
   }
 }
