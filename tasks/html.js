@@ -1,13 +1,11 @@
 const gulp = require("gulp");
-const fileinclude = require("gulp-file-include");
-
+const pug = require("gulp-pug");
 
 module.exports = function () {
   gulp.task('html', function() {
-    return gulp.src('./src/templates/*.html')
-      .pipe(fileinclude({
-        prefix: '@@',
-        basepath: '@file'
+    return gulp.src('./src/templates/*.pug')
+      .pipe(pug({
+        pretty: true
       }))
       .pipe(gulp.dest('./public'));
   });

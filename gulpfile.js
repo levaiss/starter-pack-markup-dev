@@ -20,7 +20,7 @@ gulp.task('watch', function () {
 
   gulp.watch('./src/styles/**/*.scss', gulp.parallel('styles'));
   gulp.watch('./src/scripts/**/*.js').on('change', gulp.series('scripts', browserSync.reload));
-  gulp.watch('./src/templates/**/*.html').on('change', gulp.series('html', browserSync.reload));
+  gulp.watch('./src/templates/**/*.pug').on('change', gulp.series('html', browserSync.reload));
 });
 
 gulp.task('default', gulp.parallel('styles', 'scripts', 'html', 'icons'));

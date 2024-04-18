@@ -8,4 +8,7 @@ module.exports = {
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
+  "plugins": [
+    "pug"
+  ]
 }

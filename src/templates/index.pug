@@ -1,0 +1,19 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0, maximum-scale=2.0, minimum-scale=1.0")
+    meta(http-equiv="X-UA-Compatible", content="ie=edge")
+    title Document
+    meta(name="description", content="Put your description here.")
+    link(rel="stylesheet", href="css/main.css")
+  body
+    h1 Lorem ipsum dolor sit amet.
+    svg.base-icon(class="base-icon")
+      use(xlink:href=`icons/sprite.svg#chevron`)
+
+    ul
+      each val in [1, 2, 3]
+        li= val
+
+    script(src="js/main.js")
