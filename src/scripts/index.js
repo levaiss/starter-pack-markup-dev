@@ -8,7 +8,7 @@ const App = function () {
 
     await wait(300);
 
-    notyf.error('Please fill out the form');
+    notyf.error('Test error message');
   }
 
   testFn();
